@@ -204,11 +204,3 @@ add_custom_target(POST_BUILD_CLEANUP ALL DEPENDS
 if (MSVC)
     add_custom_command(TARGET POST_BUILD_CLEANUP COMMAND ${CMAKE_COMMAND} -P "${CMAKE_SOURCE_DIR}/msvc_postbuild.cmake")
 endif()
-
-# DEM: copy dependencies to CEGUI folder
-
-add_custom_target(POST_BUILD_COPY ALL DEPENDS
-    ${zlibDep} ${libpngDep} ${jpegDep} ${freetypeDep} ${SILLYDep}
-    ${minizipDep} ${harfbuzzDep} ${fribidiDep} ${libraqmDep} POST_BUILD_CLEANUP)
-
-add_custom_command(TARGET POST_BUILD_COPY COMMAND ${CMAKE_COMMAND} -P "${CMAKE_SOURCE_DIR}/postbuild_copy.cmake")
